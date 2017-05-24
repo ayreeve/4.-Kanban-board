@@ -1,3 +1,2 @@
-# Project name
-* additional information
-* license
+# Kanban board
+

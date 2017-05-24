@@ -1,5 +1,5 @@
 {
-    "name": "NAME",
+    "name": "kanban-board",
     "version": "1.0.0",
     "description": "If you find software that doesn’t have a license, that generally means you have no permission from the creators of the software to use, modify, or share the software. Although a code host such as GitHub may allow you to view and fork the code, this does not imply that you are permitted to use, modify, or share the software for any purpose.",
     "main": "index.js",
@@ -19,14 +19,14 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/ayreeve/NAME"
+        "url": "git+https://github.com/ayreeve/kanban-board"
     },
     "author": "ayreeve",
     "license": "ISC",
     "bugs": {
-        "url": "https://github.com/ayreeve/NAME/issues"
+        "url": "https://github.com/ayreeve/kanban-board/issues"
     },
-    "homepage": "https://github.com/ayreeve/NAME#readme",
+    "homepage": "https://github.com/ayreeve/kanban-board#readme",
     "devDependencies": {
         "grunt": "^1.0.1",
         "grunt-contrib-jshint": "^1.1.0"
