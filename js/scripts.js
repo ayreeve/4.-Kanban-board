@@ -1,131 +1,128 @@
-// jslint devel: true
 $(function () {
 
-    // RANDOM STRING
+    // SUPPORT FUNCTIONS
+    function initSortable() {
+        $('.card-list').sortable({
+            connectWith: '.card-list',
+            placeholder: 'card-placeholder'
+        }).disableSelection();
+    }
+
     function randomString() {
-        var chars = '0123456789abcdefghiklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXTZ',
-            str = '';
+        var chars = '0123456789abcdefghiklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXTZ'.split(),
+            str = '',
+            i;
         for (i = 0; i < 10; i++) {
             str += chars[Math.floor(Math.random() * chars.length)];
         }
         return str;
     }
 
-    // COLUMN
+    // BOARD
+    var board = {
+        name: 'Kanban board',
+        createColumn: function (column) {
+            this.element.append(column.element);
+            initSortable();
+        },
+        element: $('#board .column-container')
+    };
+
+    $('.create-column')
+        .click(function () {
+            board.createColumn(new Column(prompt('Wpisz nazwę kolumny')));
+        });
+
+    // KANBAN COLUMN CLASS
     function Column(name) {
         var self = this;
+
         this.id = randomString();
         this.name = name;
-        this.$element = createColumn();
+        this.element = createColumn();
 
         function createColumn() {
-            // creating components of column
-            var $column = $('<div>').addClass('column'),
-                $columnTitle = $('<h2>').addClass('column-title').text(self.name),
-                $columnCardList = $('<ul>').addClass('column-card-list'),
-                $columnDelete = $('<button>').addClass('btn-delete').text('x'),
-                $columnAddCard = $('<button>').addClass('add-card').text('Add a card');
+            // CREAING COMPONENTS OF COLUMN
+            var column = $('<div class="column"></div>'),
+                columnTitle = $('<h2 class="column-title">' + self.name + '</h2>'),
+                columnCardList = $('<ul class="card-list"></ul>'),
+                columnDelete = $('<button class="btn-delete">x</button>'),
+                columnAddCard = $('<button class="column-add-card">Add card</button>');
 
-            // adding events
-            $columnDelete.click(function () {
-                self.removeColumn();
+            // ADDING EVENTS
+            columnDelete.click(function () {
+                self.deleteColumn();
+            });
+            columnAddCard.click(function (event) {
+                event.preventDefault();
+                self.createCard(new Card(prompt("Card name")));
             });
 
-            $columnAddCard.click(function () {
-                self.addCard(new Card(prompt("Enter the name of the card")));
-            });
-
-            // construction column element
-            $column.append($columnTitle)
-                .append($columnDelete)
-                .append($columnAddCard)
-                .append($columnCardList);
-
-            // return of created column
-            return $column;
+            // CREATING COLUMN ELEMENT
+            column.append(columnTitle)
+                .append(columnDelete)
+                .append(columnAddCard)
+                .append(columnCardList);
+            return column;
         }
     }
-
     Column.prototype = {
-        addCard: function (card) {
-            this.$element.children('ul').append(card.$element);
+        createCard: function (card) {
+            this.element.children('ul').append(card.element);
         },
-        removeColumn: function () {
-            this.$element.remove();
+        deleteColumn: function () {
+            this.element.remove();
         }
     };
 
-    // CARD
+    // KANBAN CARD CLASS
     function Card(description) {
         var self = this;
 
         this.id = randomString();
         this.description = description;
-        this.$element = createCard(); //
+        this.element = createCard();
 
         function createCard() {
             // creating the blocks
-            var $card = $('<li>').addClass('card'),
-                $cardDescription = $('<p>').addClass('card-description').text(self.description),
-                $cardDelete = $('<button>').addClass('btn-delete').text('x');
+            var card = $('<li class="card"></li>'),
+                cardDeleteBtn = $('<button class="btn-delete">x</button>'),
+                cardDescription = $('<p class="card-description"></p>');
 
             // adding events
-            $cardDelete.click(function () {
+            cardDeleteBtn.click(function () {
                 self.removeCard();
             });
 
             // return of created card
-            $card.append($cardDelete).append($cardDescription);
-            return $card;
+            card.append(cardDeleteBtn);
+            cardDescription.text(self.description);
+            card.append(cardDescription)
+            return card;
         }
     }
-
     Card.prototype = {
         removeCard: function () {
-            this.$element.remove();
+            this.element.remove();
         }
     }
 
-    // BOARD
-    var board = {
-        name: 'Kanban Board',
-        addColumn: function (column) {
-            this.$element.append(column.$element);
-            initSortable();
-        },
-        $element: $('#board .column-container')
-    };
-
-    function initSortable() {
-        $('.column-card-list').sortable({
-            connectWith: '.column-card-list',
-            placeholder: 'card-placeholder'
-        }).disableSelection();
-    }
-
-    $('.create-column')
-        .click(function () {
-            var name = prompt('Enter a column name'),
-                column = new Column(name);
-            board.addColumn(column);
-        });
-
     // ADDING:
-    // column
+    // new columns
     var todoColumn = new Column('To do'),
-        doingColumn = new Column('Doing'),
+        doingColumn = new Column('In progress'),
         doneColumn = new Column('Done');
 
     // column to board
-    board.addColumn(todoColumn);
-    board.addColumn(doingColumn);
-    board.addColumn(doneColumn);
+    board.createColumn(todoColumn);
+    board.createColumn(doingColumn);
+    board.createColumn(doneColumn);
 
     // new cards
     var card1 = new Card('New task'),
-        card2 = new Card('Create kanban boards');
+        card2 = new Card('create Kanban board');
 
     // cards to column
-    todoColumn.addCard(card1);
-    doingColumn.addCard(card2);
-});
+    todoColumn.createCard(card1);
+    doingColumn.createCard(card2);
+})

@@ -1,3 +1,99 @@
+/* GENERAL */
+
+* {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+}
+
+.ui-sortable {
+    min-height: 80px;
+}
+
+
+/* BUTTON */
+
+.btn-delete {
+    width: 22px;
+    height: 22px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    border: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    color: white;
+}
+
+
+/* BOARD */
+
+.board h1 {
+    margin-left: 8px;
+}
+
+.column-container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -ms-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+}
+
+
+/* COLUMN */
+
+.column {
+    min-width: 300px;
+    min-height: 50vh;
+    margin-left: 8px;
+    position: relative;
+    -webkit-box-ordinal-group: 2;
+    -ms-flex-order: 1;
+    order: 1;
+    list-style: none;
+    background-color: lightgrey;
+}
+
+.column-add-card {
+    margin: 5px 8px;
+    display: block;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+
+/* CARD */
+
+.card {
+    height: 60px;
+    padding: 4px;
+    margin-bottom: 5px;
+    position: relative;
+    display: block;
+    overflow: hidden;
+}
+
+.card-list {
+    margin: 5px;
+    padding: 0px;
+    list-style: none;
+}
+
+.card-description {
+    margin: 2px 0;
+}
+
 .card-placeholder {
-    border: 2px solid #000;
+    height: 60px;
+    margin-bottom: 5px;
+    display: block;
+    border: 2px solid lightgrey;
+    background-color: lightblue;
 }
