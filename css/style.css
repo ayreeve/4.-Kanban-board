@@ -15,7 +15,10 @@ body {
 }
 
 
-/* TITLE */
+/* BOARD */
+
+
+/* title */
 
 h1 {
     margin-top: 40px;
@@ -25,11 +28,7 @@ h1 {
 }
 
 
-/* BOARD */
-
-h2 {
-    font-weight: 100;
-}
+/* button */
 
 .create-column {
     display: -webkit-box;
@@ -52,6 +51,9 @@ h2 {
     opacity: 1;
 }
 
+
+/* container */
+
 .column-container {
     margin-top: 20px;
     display: -webkit-box;
@@ -64,8 +66,8 @@ h2 {
     -webkit-box-direction: normal;
     -ms-flex-direction: row;
     flex-direction: row;
-    -ms-flex-wrap: nowrap;
-    flex-wrap: nowrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
 }
 
 
@@ -74,8 +76,7 @@ h2 {
 .column {
     width: 22vw;
     min-width: 200px;
-    height: 50vh;
-    min-height: 200px;
+    min-height: 50vh;
     margin: 10px;
     padding: 10px;
     position: relative;
@@ -87,11 +88,18 @@ h2 {
     order: 1;
     list-style: none;
     border: none;
-    border-radius: 5%;
+    border-radius: 10px;
     background-color: rgba(211, 211, 211, 0.76);
     -webkit-box-shadow: 5px 5px 10px rgba(103, 102, 102, 0.57);
     box-shadow: 5px 5px 10px rgba(103, 102, 102, 0.57);
     outline: none;
+}
+
+
+/* headings */
+
+h2 {
+    font-weight: 100;
 }
 
 
@@ -140,6 +148,12 @@ h2 {
     min-height: 40px;
 }
 
+.card-list {
+    margin: 5px;
+    padding: 0px;
+    list-style: none;
+}
+
 .card {
     padding: 10px;
     margin: 10px 0;
@@ -150,12 +164,6 @@ h2 {
     border-radius: 8px;
     background-color: rgba(10, 168, 168, 0.29);
     cursor: pointer;
-}
-
-.card-list {
-    margin: 5px;
-    padding: 0px;
-    list-style: none;
 }
 
 .card-description {

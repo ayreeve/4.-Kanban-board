@@ -19,7 +19,8 @@ function Column(id, name) {
         });
 
         columnAddCard.click(function (event) {
-            var cardName = swal({
+            var cardName = prompt("Card name:");
+            /* swal({
                     title: "Card name",
                     text: "Enter the card name:",
                     type: "input",
@@ -37,7 +38,7 @@ function Column(id, name) {
                     }
 
                     swal("OK", "Card " + "'" + inputValue + "'" + " created", "success");
-                });
+                });*/
             event.preventDefault();
             event.preventDefault();
             $.ajax({
