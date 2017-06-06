@@ -11,6 +11,7 @@ body {
     color: #434546;
     background-image: url(../images/background/background.jpg);
     background-size: cover;
+    background-attachment: fixed;
 }
 
 
@@ -70,6 +71,32 @@ h2 {
 
 /* COLUMN */
 
+.column {
+    width: 22vw;
+    min-width: 200px;
+    height: 50vh;
+    min-height: 200px;
+    margin: 10px;
+    padding: 10px;
+    position: relative;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-ordinal-group: 2;
+    -ms-flex-order: 1;
+    order: 1;
+    list-style: none;
+    border: none;
+    border-radius: 5%;
+    background-color: rgba(211, 211, 211, 0.76);
+    -webkit-box-shadow: 5px 5px 10px rgba(103, 102, 102, 0.57);
+    box-shadow: 5px 5px 10px rgba(103, 102, 102, 0.57);
+    outline: none;
+}
+
+
+/* column buttons */
+
 .btn-delete {
     width: 20px;
     height: 20px;
@@ -87,26 +114,6 @@ h2 {
 
 .btn-delete:hover {
     background-color: rgba(103, 102, 102, 0.57);
-}
-
-.column {
-    min-width: 300px;
-    min-height: 50vh;
-    margin: 10px;
-    padding: 10px;
-    position: relative;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    justify-content: center;
-    -webkit-box-ordinal-group: 2;
-    -ms-flex-order: 1;
-    order: 1;
-    list-style: none;
-    border: none;
-    border-radius: 5%;
-    background-color: rgba(211, 211, 211, 0.76);
-    -webkit-box-shadow: 5px 5px 10px rgba(103, 102, 102, 0.57);
-    box-shadow: 5px 5px 10px rgba(103, 102, 102, 0.57);
 }
 
 .column-add-card {
@@ -130,11 +137,10 @@ h2 {
 /* CARD */
 
 .ui-sortable {
-    min-height: 60px;
+    min-height: 40px;
 }
 
 .card {
-    height: 60px;
     padding: 10px;
     margin: 10px 0;
     position: relative;
@@ -158,6 +164,7 @@ h2 {
 
 .card-placeholder {
     height: 60px;
+    min-height: 20px;
     margin-bottom: 5px;
     display: block;
     border: 1px solid rgba(9, 118, 118, 0.29);
