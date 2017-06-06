@@ -9,7 +9,25 @@ var board = {
 
 $('.create-column')
     .click(function () {
-        var columnName = prompt('Enter a column name');
+        var columnName = swal({
+                title: "Column name",
+                text: "Enter the column name:",
+                type: "input",
+                showCancelButton: true,
+                closeOnConfirm: false,
+                animation: "slide-from-top",
+                inputPlaceholder: "column name"
+            },
+            function (inputValue) {
+                if (inputValue === false) return false;
+
+                if (inputValue === "") {
+                    swal.showInputError("Your column need a name");
+                    return false
+                }
+
+                swal("OK", "Column " + "'" + inputValue + "'" + " created", "success");
+            });
 
         $.ajax({
             url: baseUrl + '/column',

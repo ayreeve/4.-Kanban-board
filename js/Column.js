@@ -19,7 +19,25 @@ function Column(id, name) {
         });
 
         columnAddCard.click(function (event) {
-            var cardName = prompt("Enter the name of the card");
+            var cardName = swal({
+                    title: "Card name",
+                    text: "Enter the card name:",
+                    type: "input",
+                    showCancelButton: true,
+                    closeOnConfirm: false,
+                    animation: "slide-from-top",
+                    inputPlaceholder: "card name"
+                },
+                function (inputValue) {
+                    if (inputValue === false) return false;
+
+                    if (inputValue === "") {
+                        swal.showInputError("Your card need a name");
+                        return false
+                    }
+
+                    swal("OK", "Card " + "'" + inputValue + "'" + " created", "success");
+                });
             event.preventDefault();
             event.preventDefault();
             $.ajax({
