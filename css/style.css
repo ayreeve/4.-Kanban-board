@@ -16,15 +16,19 @@ body {
 
 /* TITLE */
 
-.board h1 {
-    margin-top: 30px;
-    font-size: 2.3em;
+h1 {
+    margin-top: 40px;
     text-align: center;
+    font-weight: 100;
     color: rgb(83, 71, 71);
 }
 
 
 /* BOARD */
+
+h2 {
+    font-weight: 100;
+}
 
 .create-column {
     display: -webkit-box;
@@ -74,11 +78,15 @@ body {
     top: 5px;
     border: 0;
     border-radius: 50%;
-    background-color: rgba(0, 0, 0, 0.4);
-    color: white;
+    background-color: rgba(62, 62, 62, 0.3);
+    color: #ebebeb;
     cursor: pointer;
     line-height: 8.5px;
     outline: none;
+}
+
+.btn-delete:hover {
+    background-color: rgba(103, 102, 102, 0.57);
 }
 
 .column {
