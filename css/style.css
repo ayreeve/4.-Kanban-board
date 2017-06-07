@@ -9,9 +9,30 @@ body {
     margin: 0 auto;
     font-family: 'Roboto', sans-serif;
     color: #434546;
+    background-color: rgba(188, 186, 186, 0.6);
     background-image: url(../images/background/background.jpg);
     background-size: cover;
     background-attachment: fixed;
+}
+
+
+/* SCROLLBAR */
+
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, .3);
+    border-radius: 10px;
+    background-color: rgba(188, 186, 186, 0.3);
+}
+
+::-webkit-scrollbar {
+    width: 12px;
+    background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    -webkit-box-shadow: inset 0 0 7px rgba(0, 0, 0, .3);
+    border-radius: 10px;
+    background-color: rgba(188, 186, 186, 0.3);
 }
 
 
@@ -166,10 +187,6 @@ h2 {
     cursor: pointer;
 }
 
-.card-description {
-    margin: 10px 0;
-}
-
 .card-placeholder {
     height: 60px;
     min-height: 20px;
@@ -178,4 +195,47 @@ h2 {
     border: 1px solid rgba(9, 118, 118, 0.29);
     border-radius: 8px;
     background-color: rgba(90, 177, 177, 0.29);
+}
+
+
+/* ALERT */
+
+
+/* fonts */
+
+.sweet-alert h2,
+.sweet-alert p,
+.sweet-alert input,
+.sweet-alert button {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 100;
+}
+
+
+/* buttons */
+
+.sweet-alert button {
+    border-radius: 50px;
+}
+
+
+/* input, alert box */
+
+.sweet-alert input {
+    border-radius: 8px;
+}
+
+.sweet-alert {
+    border-radius: 10px
+}
+
+
+/* succes aniamtion */
+
+.sweet-alert .sa-icon.sa-success .sa-line {
+    background-color: rgba(91, 192, 222, 0.75);
+}
+
+.sweet-alert .sa-icon.sa-success .sa-placeholder {
+    border: 4px solid #5BC0DE;
 }
