@@ -19,8 +19,9 @@ function Column(id, name) {
         });
 
         columnAddCard.click(function (event) {
-            var cardName = prompt("Card name:");
-            /* swal({
+            var cardName = "";
+
+            swal({
                     title: "Card name",
                     text: "Enter the card name:",
                     type: "input",
@@ -37,22 +38,25 @@ function Column(id, name) {
                         return false
                     }
 
+                    cardName = inputValue;
+
+                    $.ajax({
+                        url: baseUrl + '/card',
+                        method: 'POST',
+                        data: {
+                            name: cardName,
+                            bootcamp_kanban_column_id: self.id
+                        },
+                        success: function (response) {
+                            var card = new Card(response.id, cardName);
+                            self.createCard(card);
+                        }
+                    });
+                    event.preventDefault();
+
                     swal("OK", "Card " + "'" + inputValue + "'" + " created", "success");
-                });*/
-            event.preventDefault();
-            event.preventDefault();
-            $.ajax({
-                url: baseUrl + '/card',
-                method: 'POST',
-                data: {
-                    name: cardName,
-                    bootcamp_kanban_column_id: self.id
-                },
-                success: function (response) {
-                    var card = new Card(response.id, cardName);
-                    self.createCard(card);
-                }
-            });
+                });
+
         });
 
         // CREATING COLUMN ELEMENT

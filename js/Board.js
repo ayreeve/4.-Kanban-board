@@ -9,38 +9,40 @@ var board = {
 
 $('.create-column')
     .click(function () {
-        var columnName = prompt('Column name');
-        /*swal({
-            title: "Column name",
-            text: "Enter the column name:",
-            type: "input",
-            showCancelButton: true,
-            closeOnConfirm: false,
-            animation: "slide-from-top",
-            inputPlaceholder: "column name"
-        },
-        function (inputValue) {
-            if (inputValue === false) return false;
+        var columnName = "";
 
-            if (inputValue === "") {
-                swal.showInputError("Your column need a name");
-                return false
-            }
-
-            swal("OK", "Column " + "'" + inputValue + "'" + " created", "success");
-        });*/
-
-        $.ajax({
-            url: baseUrl + '/column',
-            method: 'POST',
-            data: {
-                name: columnName
+        swal({
+                title: "Column name",
+                text: "Enter the column name:",
+                type: "input",
+                showCancelButton: true,
+                closeOnConfirm: false,
+                animation: "slide-from-top",
+                inputPlaceholder: "column name"
             },
-            success: function (response) {
-                var column = new Column(response.id, columnName);
-                board.createColumn(column);
-            }
-        });
+            function (inputValue) {
+                if (inputValue === false) return false;
+
+                if (inputValue === "") {
+                    swal.showInputError("Your column need a name");
+                    return false
+                }
+
+                columnName = inputValue;
+
+                $.ajax({
+                    url: baseUrl + '/column',
+                    method: 'POST',
+                    data: {
+                        name: columnName
+                    },
+                    success: function (response) {
+                        var column = new Column(response.id, columnName);
+                        board.createColumn(column);
+                    }
+                });
+                swal("OK", "Column " + "'" + inputValue + "'" + " created", "success");
+            });
     });
 
 function initSortable() {
