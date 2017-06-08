@@ -7,7 +7,7 @@
 
 body {
     margin: 0 auto;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Arial', sans-serif;
     color: #434546;
     background-color: rgba(188, 186, 186, 0.6);
     background-image: url(../images/background/background.jpg);
@@ -15,7 +15,6 @@ body {
     background-attachment: fixed;
     background-repeat: no-repeat;
     min-height: 100%;
-    /*height: 100vh;*/
 }
 
 
