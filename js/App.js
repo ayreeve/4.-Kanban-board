@@ -12,7 +12,7 @@ $.ajaxSetup({
     headers: myHeaders
 });
 
-/* request to serwer (get board content) */
+/* request to server (get board content) */
 $.ajax({
     url: baseUrl + '/board',
     method: 'GET',
