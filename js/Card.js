@@ -8,8 +8,8 @@ function Card(id, name) {
 
     /* create card */
     function createCard() {
-        var card = $('<li class="card"></li>'),
-            cardDeleteBtn = $('<button class="btn-delete"><img src="../images/buttons/delete_button.png" alt="delete button"></button>'),
+        var card = $('<li data-card-id-"' + this.id + '" class="card"></li>'),
+            cardDeleteBtn = $('<button class="btn-delete"><img src="images/buttons/delete_button.png" alt="delete button"></button>'),
             cardDescription = $('<p class="card-description"></p>');
 
         /* click event - remove card */
@@ -20,7 +20,7 @@ function Card(id, name) {
         /* append elements to card */
         card.append(cardDeleteBtn);
         cardDescription.text(self.name);
-        card.append(cardDescription)
+        card.append(cardDescription);
         return card;
     }
 }
@@ -37,21 +37,22 @@ Card.prototype = {
             }
         });
     }
-}
+};
 
 /* modify card */
-$('.card p').dbclick(function () {
-    var newCardName = prompt('New card name');
+$('.card p').dblclick(function () {
+    var newCardName = prompt('New card name'),
+        $cardDescription = $(this),
+        cardID = $cardDescription.closest('.card').data('card-id');
     $.ajax({
-        url: baseUrl + '/card' + self.id,
+        url: baseUrl + '/card' + cardId,
         method: 'PUT',
         data: {
-            id: self.id,
+            id: cardId,
             name: newCardName
         },
-        success: function (response) {
-            var newCard = new Card(response.id, newCardName);
-            column.createCard(card);
+        success: function () {
+            $cardDescription.text(newCardName);
         }
     });
 });

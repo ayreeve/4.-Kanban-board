@@ -10,7 +10,7 @@ function Column(id, name) {
         var column = $('<div class="column"></div>'),
             columnTitle = $('<h2 class="column-title">' + self.name + '</h2>'),
             columnCardList = $('<ul class="card-list"></ul>'),
-            columnDelete = $('<button class="btn-delete"><img src="../images/buttons/delete_button.png alt="delete button"></button>'),
+            columnDelete = $('<button class="btn-delete"><img src="images/buttons/delete_button.png" alt="delete button"></button>'),
             columnAddCard = $('<button class="column-add-card">Add card</button>');
 
         // ADDING EVENTS
@@ -84,20 +84,3 @@ Column.prototype = {
         });
     }
 };
-
-/* modify column */
-$('.column h2').dbclick(function () {
-    var newColumnName = prompt('New column name');
-    $.ajax({
-        url: baseUrl + '/column' + self.id,
-        method: 'PUT',
-        data: {
-            id: self.id,
-            name: newColumnName
-        },
-        success: function (response) {
-            var newColumn = new Column(response.id, newColumnName);
-            board.createColumn(column);
-        }
-    });
-});
