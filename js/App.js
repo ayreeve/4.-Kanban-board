@@ -40,7 +40,7 @@ function setupCards(col, cards) {
     $('.card p').dblclick(function () {
         var newCardName = "",
             $cardDescription = $(this),
-            cardID = $cardDescription.closest('.card').data('card-id');
+            cardID = $cardDescription.closest('.card').data('.card');
 
         swal({
                 title: "Changing card name",

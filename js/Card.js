@@ -8,7 +8,7 @@ function Card(id, name) {
 
     /* create card */
     function createCard() {
-        var card = $('<li data-card-id-"' + this.id + '" class="card"></li>'),
+        var card = $('<li data-card-id="' + self.id + '" class="card"></li>'),
             cardDeleteBtn = $('<button class="btn-delete"><img src="images/buttons/delete_button.png" alt="delete button"></button>'),
             cardDescription = $('<p class="card-description"></p>');
 
