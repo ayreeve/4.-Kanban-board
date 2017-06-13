@@ -38,21 +38,3 @@ Card.prototype = {
         });
     }
 };
-
-/* modify card */
-$('.card p').dblclick(function () {
-    var newCardName = prompt('New card name'),
-        $cardDescription = $(this),
-        cardID = $cardDescription.closest('.card').data('card-id');
-    $.ajax({
-        url: baseUrl + '/card' + cardId,
-        method: 'PUT',
-        data: {
-            id: cardId,
-            name: newCardName
-        },
-        success: function () {
-            $cardDescription.text(newCardName);
-        }
-    });
-});

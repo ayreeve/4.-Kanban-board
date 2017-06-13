@@ -33,7 +33,47 @@ function setupColumns(columns) {
 /* setup cards */
 function setupCards(col, cards) {
     cards.forEach(function (card) {
-        var card = new Card(card.id, card.name, card.bootcamp_kanban_column_id);
+        card = new Card(card.id, card.name, card.bootcamp_kanban_column_id);
         col.createCard(card);
-    })
+    });
+    /* modify card */
+    $('.card p').dblclick(function () {
+        var newCardName = "",
+            $cardDescription = $(this),
+            cardID = $cardDescription.closest('.card').data('card-id');
+
+        swal({
+                title: "Changing card name",
+                text: "Enter new name for chosen card:",
+                type: "input",
+                showCancelButton: true,
+                closeOnConfirm: false,
+                animation: "slide-from-top",
+                inputPlaceholder: "new card name"
+            },
+            function (inputValue) {
+                if (inputValue === false) return false;
+
+                if (inputValue === "") {
+                    swal.showInputError("Your card need a name");
+                    return false
+                }
+
+                newCardName = inputValue;
+
+                $.ajax({
+                    url: baseUrl + '/card' + cardID,
+                    method: 'PUT',
+                    data: {
+                        id: cardID,
+                        name: newCardName
+                    },
+                    success: function () {
+                        $cardDescription.text(newCardName);
+                    }
+                });
+
+                swal("OK", "Card renamed", "success");
+            });
+    });
 }
